@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../capstone_clone"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Capstone",
+		"liveServer.settings.port": 5501
+	}
+}
