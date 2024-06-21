@@ -1,15 +1,20 @@
 import check from "../../public/check.svg"
 import error from "../../public/error.svg"
 
-export default function VerifyPrompt({mess})
+export default function VerifyPrompt({mess, retry})
 {
+
+    // function handleretry()
+    // {
+    //     retry();
+    // }
     let text="";
     if(mess.predicted_speaker === "Cloned")
         {
             text = (<div className="verify-prompt verify-prompt-wrong">
             <img className="verify-prompt-icon" src={error} alt="" />
             <p className="verify-prompt-message">Cloned Voice Detected... </p>
-            <button className="verify-prompt-wrong-retry">RETRY</button>
+            <button className="verify-prompt-wrong-retry" onClick={retry}>RETRY</button>
         </div>);
         }
         else if(mess.predicted_speaker === "other")
@@ -17,15 +22,15 @@ export default function VerifyPrompt({mess})
                 text = (<div className="verify-prompt verify-prompt-wrong">
                     <img className="verify-prompt-icon" src={error} alt="" />
                     <p className="verify-prompt-message">User not in Database... </p>
-                    <button className="verify-prompt-wrong-retry">RETRY</button>
+                    <button className="verify-prompt-wrong-retry" onClick={retry}>RETRY</button>
                 </div>);
             }
         else if(mess.predicted_speaker === "No Voice")
             {
                 text = (<div className="verify-prompt verify-prompt-wrong">
                     <img className="verify-prompt-icon" src={error} alt="" />
-                    <p className="verify-prompt-message">No voice input Provided... </p>
-                    <button className="verify-prompt-wrong-retry">RETRY</button>
+                    <p className="verify-prompt-message">No voice input detected... </p>
+                    <button className="verify-prompt-wrong-retry" onClick={retry}>RETRY</button>
                 </div>);
             }
             else

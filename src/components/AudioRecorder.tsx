@@ -25,7 +25,10 @@ const AudioRecorderComponent = () => {
     },
   });
 
-  const [verify,setVerify] = useState({});
+  const [verify,setVerify] = useState({predicted_speaker:"Cloned"});
+  const [result, setResult] = useState(false);
+  const [myrecording, setMyRecording] = useState(false);
+
  
 // console.log('recordingBlob=>',startRecording)
   useEffect(() => {
@@ -40,7 +43,11 @@ const AudioRecorderComponent = () => {
     }
 
     const sendAudioToBackend = async () => {
+      console.log('stop Recording')
       if (recordingBlob) {
+        setResult(true);
+        setMyRecording(true);
+        
         const formData = new FormData();
         formData.append('file', recordingBlob, 'recording.wav');
         try {
@@ -64,19 +71,31 @@ const AudioRecorderComponent = () => {
       } else {
         console.log('No blob available to send.');
       }
+      
     };
     sendAudioToBackend();
     
 
   }, [recordingBlob]);
 
+  function handleRetry()
+  {
+    setMyRecording(false);
+    setResult(false);
+  }
+
+ 
+  
+
   return (
     <>
-      {!isRecording &&<button className="start-record" onClick={startRecording} disabled={isRecording}>
+    
+      {(!isRecording && !myrecording && !result) &&<button className="start-record" onClick={startRecording} disabled={isRecording}>
         <img src={micIcon} alt="" />
         SPEAK FOR PASSWORD
       </button>}
-      {isRecording && <button onClick={stopRecording} className="stop-record" disabled={!isRecording}>
+      
+      {(isRecording && !myrecording && !result) && <button onClick={stopRecording} className="stop-record" disabled={!isRecording}>
         <img src={stopIcon} alt="" />
         <Waves />
       </button>}
@@ -84,7 +103,7 @@ const AudioRecorderComponent = () => {
         {isPaused ? "Resume" : "Pause"}
       </button> */}
       {isRecording && <div>Recording Time: {recordingTime}s</div>}
-      {recordingBlob && <VerifyPrompt mess={verify} />}
+      {(myrecording && result) && <VerifyPrompt mess={verify} retry={handleRetry}  />}
     </>
   );
 };
