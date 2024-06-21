@@ -5,14 +5,11 @@ import AudioRecorderComponent from "./AudioRecorder";
 export default function LoginDialog() {
 
     const [loginActive, setLoginActive] = useState(false);
-    function handleActive(newValue)
+    function handleActive()
     {
-        setLoginActive(newValue);
+        setLoginActive(true);
     }
-    function handleClick()
-    {
-        setLoginActive(false);
-    }
+    
 
 
 
@@ -31,8 +28,8 @@ export default function LoginDialog() {
             Hello, my name is [Name]. My voice is my password, secure and safe with ThreatEase.
             </div> 
         </div>
-        <AudioRecorderComponent />
-        <button type="submit" className={`login ${loginActive? "login--active" : null}`} onClick={handleClick}>LOGIN</button>
+        <AudioRecorderComponent activateLogin={handleActive} />
+        <button type="submit" className={`login ${loginActive? "login--active" : null}`} >LOGIN</button>
       </div>
     </div>
   );

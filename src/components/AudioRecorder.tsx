@@ -6,7 +6,7 @@ import stopIcon from "../../public/pause_button.svg"
 import Waves from "./Waves";
 import VerifyPrompt from "./VerifyPrompt";
 
-const AudioRecorderComponent = () => {
+const AudioRecorderComponent = ({activateLogin}) => {
   const {
     startRecording,
     stopRecording,
@@ -25,7 +25,7 @@ const AudioRecorderComponent = () => {
     },
   });
 
-  const [verify,setVerify] = useState({predicted_speaker:"Cloned"});
+  const [verify,setVerify] = useState({predicted_speaker:"Anushka"});
   const [result, setResult] = useState(false);
   const [myrecording, setMyRecording] = useState(false);
 
@@ -47,6 +47,12 @@ const AudioRecorderComponent = () => {
       if (recordingBlob) {
         setResult(true);
         setMyRecording(true);
+
+        if(verify.predicted_speaker!=="other" && verify.predicted_speaker!=="Cloned" && verify.predicted_speaker!=="No Voice")
+            {
+              activateLogin();
+            }
+        
         
         const formData = new FormData();
         formData.append('file', recordingBlob, 'recording.wav');
@@ -65,6 +71,10 @@ const AudioRecorderComponent = () => {
           }
           const data = await response.json();
           console.log('Response from backend:', data);
+          // if(data.predicted_speaker!=="other" && data.predicted_speaker!=="Cloned" && data.predicted_speaker!=="No Voice")
+          //   {
+          //     activateLogin();
+          //   }
         } catch (error) {
           console.error('Error sending audio to backend:', error);
         }
