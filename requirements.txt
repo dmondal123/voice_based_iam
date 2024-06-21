@@ -1,0 +1,6 @@
+torch==2.0.0
+datasets
+transformers
+soundfile
+torchaudio==2.0.1
+scikit-learn

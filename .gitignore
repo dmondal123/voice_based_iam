@@ -1,0 +1,4 @@
+model_checkpoint_updated.pth
+model_checkpoint.pth
+speaker_recognition_model.h5
+scaler.pkl
