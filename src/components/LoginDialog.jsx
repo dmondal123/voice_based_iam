@@ -19,15 +19,17 @@ export default function LoginDialog() {
   return (
     <div className="login-dialog">
       <div className="login-dialog__child">
-        <h1>Welcome to ThreatEase</h1>
+        <h1>Login</h1>
         <div className="login-dialog__par">
           <p>Threat Ease : Your Automated Defense Partner</p>
           <p>Please enter your login details to use the platform.</p>
         </div>
 
-        <div className="login-dialog__username">
-           <p>Username</p>
-           <input type="text" /> 
+        <div className="login-dialog__prompt">
+           <p className="prompt-tag">PROMPT:</p>
+           <div className="prompt">
+            Hello, my name is [Name]. My voice is my password, secure and safe with ThreatEase.
+            </div> 
         </div>
         <AudioRecorderComponent />
         <button type="submit" className={`login ${loginActive? "login--active" : null}`} onClick={handleClick}>LOGIN</button>

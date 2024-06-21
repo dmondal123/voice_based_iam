@@ -1,57 +1,10 @@
 
-
-// import * as React from 'react';
-// import { AudioRecorder } from 'react-audio-voice-recorder';
-
-
-
-// export default function AudioRecorderComponent() {
-  
-  
-//   const addAudioElement = (blob: Blob) => {
-//     const url = URL.createObjectURL(blob);
-//     console.log(blob);
-//     const audio = document.createElement('audio');
-//     audio.src = url;
-//     audio.controls = true;
-//     document.body.appendChild(audio);
-    
-//   };
-
-  
-
-//   return (
-//     <div>
-//       <AudioRecorder
-//         onRecordingComplete={addAudioElement}
-//         audioTrackConstraints={{
-//           noiseSuppression: true,
-//           echoCancellation: true,
-//           autoGainControl:true
-//           // channelCount,
-//           // deviceId,
-//           // groupId,
-//           // sampleRate,
-//           // sampleSize,/ 
-//         }}
-//         onNotAllowedOrFound={(err) => console.table(err)}
-//         downloadOnSavePress={true}
-//         downloadFileExtension="webm"
-//         mediaRecorderOptions={{
-//           audioBitsPerSecond: 128000,
-//         }}
-//         showVisualizer={true}
-//         // onStartRecording={onStart}
-       
-//       />
-//       <br />
-//     </div>
-//   );
-// }
-
-import { log } from "console";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAudioRecorder } from "react-audio-voice-recorder";
+import micIcon from "../../public/mic.svg";
+import stopIcon from "../../public/pause_button.svg"
+import Waves from "./Waves";
+import VerifyPrompt from "./VerifyPrompt";
 
 const AudioRecorderComponent = () => {
   const {
@@ -71,15 +24,19 @@ const AudioRecorderComponent = () => {
       console.error("Error accessing audio track:", error);
     },
   });
+
+  const [verify,setVerify] = useState({});
+ 
 // console.log('recordingBlob=>',startRecording)
   useEffect(() => {
     if (recordingBlob) {
       console.log(recordingBlob);
-      const url = URL.createObjectURL(recordingBlob);
-      const audio = document.createElement("audio");
-      audio.src = url;
-      audio.controls = true;
-      document.body.appendChild(audio);
+      
+      // const url = URL.createObjectURL(recordingBlob);
+      // const audio = document.createElement("audio");
+      // audio.src = url;
+      // audio.controls = true;
+      // document.body.appendChild(audio);
     }
 
     const sendAudioToBackend = async () => {
@@ -92,6 +49,7 @@ const AudioRecorderComponent = () => {
             method: 'POST',
             body: formData,
           });
+          setVerify(response);
           // Log response status
           console.log('Response status:', response.status);
           // Check if the response status is not OK
@@ -108,22 +66,26 @@ const AudioRecorderComponent = () => {
       }
     };
     sendAudioToBackend();
+    
 
   }, [recordingBlob]);
 
   return (
-    <div>
-      <button onClick={startRecording} disabled={isRecording}>
-        Start Recording
-      </button>
-      <button onClick={stopRecording} disabled={!isRecording}>
-        Stop Recording
-      </button>
-      <button onClick={togglePauseResume} disabled={!isRecording}>
+    <>
+      {!isRecording &&<button className="start-record" onClick={startRecording} disabled={isRecording}>
+        <img src={micIcon} alt="" />
+        SPEAK FOR PASSWORD
+      </button>}
+      {isRecording && <button onClick={stopRecording} className="stop-record" disabled={!isRecording}>
+        <img src={stopIcon} alt="" />
+        <Waves />
+      </button>}
+      {/* <button onClick={togglePauseResume} disabled={!isRecording}>
         {isPaused ? "Resume" : "Pause"}
-      </button>
-      <div>Recording Time: {recordingTime}s</div>
-    </div>
+      </button> */}
+      {isRecording && <div>Recording Time: {recordingTime}s</div>}
+      {recordingBlob && <VerifyPrompt mess={verify} />}
+    </>
   );
 };
 

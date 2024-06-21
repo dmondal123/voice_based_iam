@@ -12,6 +12,23 @@ export default function Waves()
             <span className="stroke"></span>
             <span className="stroke"></span>
             <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            <span className="stroke"></span>
+            
+          
+        
         </div>
 
 

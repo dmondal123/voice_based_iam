@@ -20,10 +20,12 @@ html {
 }
 
 .nav {
-  height: 10rem;
+  height: 8rem;
   display: flex;
   align-items: center;
   box-shadow: 0 2rem 3rem rgb(0 0 0 / 20%);
+  position: relative;
+  z-index: 5;
 }
 
 .nav__img {
@@ -35,15 +37,15 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: -10rem;
 }
 
 .login-dialog__child {
-  border: 1px solid #e5e5e5;
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 50rem;
+  margin-right: 15rem;
 }
 
 .login-dialog__child h1 {
@@ -63,34 +65,41 @@ html {
   font-weight: 300;
 }
 
-.login-dialog__username {
+.login-dialog__prompt {
+  width: 90%;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
   position: relative;
   font-family: "Roboto";
+  border: 2px solid #FFB800;
+  background-color: rgb(255, 184, 0,20%);
+  padding:  4rem;
+  padding-bottom: 6rem;
+  position: relative;  
 }
 
-.login-dialog__username p {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #85858b;
-  letter-spacing: 1.5px;
+
+.prompt-tag{
   position: absolute;
-  left: 10%;
-  top: 7%;
-  background-color: white;
-  padding: 5px;
+  font-size: 1.5rem;
+  top:1rem;
+  left: 2rem;
+  z-index: 5;
+  font-weight: 500;
+  
+ 
+
 }
 
-.login-dialog__username input {
-  width: 90%;
-  margin: 2rem 2rem;
-  border: 1px solid #e5e5e5;
-  outline: none;
-  padding: 2rem 4rem;
+.prompt{
+  position: absolute;
+  font-size: 1.5rem;
+  left: 2rem;
+  color: #333333;
+  
+
 }
 
-.login-dialog__username input:focus {
-  border: 1.6px solid #5f6369;
-}
 
 .sound-wave {
   width: 80%;
@@ -203,13 +212,102 @@ html {
 }
 
 .verify-prompt{
+  margin-left: 2rem;
+  width: 90%;
+  margin: 1rem 2rem;
+  margin-bottom: 3rem;
+  padding: 1.8rem;
+  display: flex;
+ 
+  font-size: 1.5rem;
+  font-family: "Roboto";
+  font-weight: 400;
+}
+
+.verify-prompt-right{
+background-color: rgb(52, 168, 83,0.1);
+}
+
+.verify-prompt-wrong{
+  background-color: rgb(210, 28, 28, 0.1);
 
 }
 
 .verify-prompt-icon{
+  margin-right: 2rem;
 
 }
 
-.verify-prompt-message{
+/* .verify-prompt-message{
   
+} */
+
+.verify-prompt-wrong-retry{
+  margin-left: 11rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #D21C1C;
+  transition: all .3s;
+}
+
+.verify-prompt-wrong-retry:hover{
+  transform: scale(1.05);
+}
+
+.login-middle{
+  display: flex;
+  justify-content: space-between;
+  height: 68rem;
+}
+
+
+
+.start-record{
+  margin-left: 2rem;
+  width: 90%;
+  margin: 1rem 2rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  font-family: "Roboto";
+  font-weight: 500;
+  border: 2px solid #FFB800;
+  background-color: rgb(255, 184, 0,20%);
+  transition: all .2s;
+  cursor: pointer;
+  
+}
+
+.start-record:hover{
+  transform: scale(1.03);
+}
+
+.start-record img{
+  margin-right: 2rem;
+  
+}
+
+.stop-record{
+  margin-left: 2rem;
+ width: 90%;
+ padding: 1.5rem;
+  margin-bottom:2rem ;
+  display: flex;
+  background-color: transparent;
+  border: 1px solid #e5e5e5;
+  transition: all .2s;
+  cursor: pointer;
+
+}
+
+.stop-record img{
+  margin-right: 2rem;
+  transition: all .2s;
+}
+
+.stop-record img:hover{
+  transform: scale(1.09);
 }
