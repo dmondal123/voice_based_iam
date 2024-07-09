@@ -26,11 +26,37 @@ html {
   box-shadow: 0 2rem 3rem rgb(0 0 0 / 20%);
   position: relative;
   z-index: 5;
+  justify-content: space-between;
 }
 
 .nav__img {
   margin-left: 5rem;
   transform: scale(1.3);
+}
+
+.nav__user{
+  display: flex;
+  font-family: "Roboto";
+  margin-right: 2.5rem;
+  font-size: 1.8rem;
+  align-items: center;
+}
+
+/* #A5A4A4 */
+
+.nav__initials{
+  background-color: #A5A4A4;
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  font-weight: 500;
+  color: white;
+
+}
+
+.nav__fullname{
+  font-weight: 700;
+
 }
 
 .login-dialog {
@@ -163,17 +189,21 @@ html {
   font-size: 2rem;
   font-weight: 500;
   border: none;
-  cursor: pointer;
-  transition: all .3s;
+ 
+  
 }
 
-.login:hover{
-  transform: scale(1.03);
-}
+
 
 .login--active{
   background-color: #FFB800;
+  cursor: pointer;
+  transition: all .3s;
   
+}
+
+.login--active:hover{
+  transform: scale(1.03);
 }
 
 .footer{
@@ -310,4 +340,8 @@ background-color: rgb(52, 168, 83,0.1);
 
 .stop-record img:hover{
   transform: scale(1.09);
+}
+.login-disable{
+  opacity: 0.6;
+  cursor: not-allowed;
 }

@@ -1,21 +1,28 @@
-import Header from "./components/Header";
 import LoginDialog from "./components/LoginDialog";
-import Footer from "./components/Footer";
-import loginPic from "../public/login.png";
+import { BrowserRouter, Route, Link, Routes, Navigate } from "react-router-dom";
+import { useState } from "react";
+import Home from "./components/Home";
+import { userData } from "./Context";
+
+// //Spinner test
+// import { Flex, Spin } from 'antd';
 
 
 export default function App() {
-
+  const [activeUer, setActiveUser] = useState(
+    localStorage.getItem("activeUser")
+  );
+  const [userName, setUserName] = useState();
   return (
     <>
-      <Header />
-      <div className="login-middle">
-        <img src={loginPic} alt="" />
-        <LoginDialog />
-      </div>
-
-      <Footer />
+    <userData.Provider value={{userName, setUserName}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginDialog />}></Route>
+          <Route path="/home" element={<Home/>}></Route>
+        </Routes>
+      </BrowserRouter>
+      </userData.Provider>
     </>
-    
   );
 }

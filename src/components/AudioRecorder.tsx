@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useAudioRecorder } from "react-audio-voice-recorder";
 import micIcon from "../../public/mic.svg";
 import stopIcon from "../../public/pause_button.svg";
 import Waves from "./Waves";
 import VerifyPrompt from "./VerifyPrompt";
+import { userData } from "../Context";
 
 const AudioRecorderComponent = ({ activateLogin }) => {
+
+  const {setUserName} = useContext(userData);
+
   const {
     startRecording,
     stopRecording,
@@ -22,7 +26,7 @@ const AudioRecorderComponent = ({ activateLogin }) => {
     },
   });
 
-  const [verify, setVerify] = useState({});
+  const [verify, setVerify] = useState({predicted_speaker:"Anushka"});
   const [result, setResult] = useState(false);
   const [myRecording, setMyRecording] = useState(false);
 
@@ -31,14 +35,22 @@ const AudioRecorderComponent = ({ activateLogin }) => {
     if (recordingBlob) {
       console.log("Valid Recording Blob: ", recordingBlob);
 
+      
+
       const sendAudioToBackend = async () => {
         setResult(true);
         setMyRecording(true);
-
-        
-
         const formData = new FormData();
         formData.append("file", recordingBlob, "recording.wav");
+
+        // When only usng Frontend
+          localStorage.setItem("activeUser", "active");
+          localStorage.setItem("activeUserName", verify.predicted_speaker);
+          
+            activateLogin(true);
+            setUserName(verify.predicted_speaker);
+
+        // Delete Later
         try {
           console.log("Sending audio to model...");
           const response = await fetch("http://127.0.0.1:8092/predict/", {
@@ -53,15 +65,18 @@ const AudioRecorderComponent = ({ activateLogin }) => {
           }
           const data = await response.json();
           console.log("Response from backend:", data);
-          setVerify(data);
-          if (
-            verify.predicted_speaker !== "other" &&
-            verify.predicted_speaker !== "Cloned" &&
-            verify.predicted_speaker !== "No Voice"
-          ) {
-            activateLogin();
-          }
+          // setVerify(data);
+          // if (
+          //   verify.predicted_speaker !== "other" &&
+          //   verify.predicted_speaker !== "Cloned" &&
+          //   verify.predicted_speaker !== "No Voice"
+          // ) {
+          //   localStorage.setItem("activeUser", "active");
+          //   activateLogin(true);
+            // setUserName(verify.predicted_speaker);
+          // }
         } catch (error) {
+          
           console.error("Error sending audio to backend:", error);
         }
       };
