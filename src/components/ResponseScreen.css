@@ -1,0 +1,53 @@
+.app_desc{
+    border: 1px solid #E5E5E5;
+    margin: 4rem;
+
+}
+
+.app_desc-name{
+font-weight: 300;
+}
+
+.app_desc-desc{
+    font-size: 1.5rem;
+    padding: 0 3rem;
+    padding-bottom: 1rem;
+    font-family: "Roboto";
+    font-weight: 200;
+}
+
+.app_threat{
+    display: flex;
+    border: 1px solid #F5222D;
+    margin: 4rem;
+    background-color: #FFD6D8;
+}
+.app_threat img{
+    margin-left: 2rem;
+    
+}
+
+
+.app_threat-heading{
+    font-weight: 300;
+    color: #F5222D;
+    
+}
+
+.app_threat-desc{
+    font-size: 1.5rem;
+    padding: 0 3rem;
+    padding-bottom: 1rem;
+    font-family: "Roboto";
+    font-weight: 200;
+
+}
+
+.app_threat-green{
+    border: 1px solid #236B0A;
+    background-color: #D6FFDC;
+}
+
+.app_threat-heading-green{
+    color: #236B0A;
+}

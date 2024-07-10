@@ -63,6 +63,29 @@ width: 25rem;
 margin-right: 2rem;
 }
 
+.home__detect{
+    margin-top: 15rem;
+    text-align: center;
+    animation: attack_detect .6s;
+}
+
+.home__detect h1{
+    font-weight: 400;
+}
+
+@keyframes attack_detect{
+    0%{
+        margin-top: 30rem;
+        opacity: 0;
+    }
+    100%{
+        margin-top: 15rem;
+        opacity: 1;
+    }
+}
+
+
+
 
 
 
