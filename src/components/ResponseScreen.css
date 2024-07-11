@@ -1,3 +1,43 @@
+/* .response{
+    background-color: #E5E5E5;
+    height: 66.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.response__inner{
+    width: 95%;
+    height: 90%;
+    background-color: white;
+
+} */
+
+.response{
+    background-color: #E5E5E5;
+    height: 134rem;
+    /* height: 66.8rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.response__inner{
+    width: 95%;
+    height: 90%;
+    background-color: white;
+    margin-bottom: 5rem;
+
+}
+
+.response__inner h1{
+    font-family: "Roboto";
+    margin: 3rem;
+    font-size: 2.5rem;
+}
+
 .app_desc{
     border: 1px solid #E5E5E5;
     margin: 4rem;
@@ -5,7 +45,7 @@
 }
 
 .app_desc-name{
-font-weight: 300;
+font-weight: 500;
 }
 
 .app_desc-desc{
@@ -50,4 +90,48 @@ font-weight: 300;
 
 .app_threat-heading-green{
     color: #236B0A;
+}
+
+.terminal{
+    margin: 4rem;
+    background-color: black;
+    color: white;
+    margin-bottom: 10rem;
+    border-radius: 5px;
+
+}
+
+.terminal__top{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    border-bottom: 1px solid white;
+    font-family: "Inter";
+    font-size: 1.5rem;
+
+}
+
+.terminal__top button{
+    background-color: transparent;
+    border: none;
+    transform: scale(1.5);
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.terminal__top button:hover{
+    transform: scale(1.6);
+}
+
+.terminal__bottom{
+    height: 50rem;
+    overflow: auto;
+}
+
+.terminal__bottom p{
+    font-family: "Roboto Mono";
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: lightgreen;
 }

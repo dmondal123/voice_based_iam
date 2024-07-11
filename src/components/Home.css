@@ -1,5 +1,6 @@
 .home{
     background-color: #E5E5E5;
+    /* height: 135rem; */
     height: 66.8rem;
     display: flex;
     justify-content: center;
@@ -13,6 +14,7 @@
     background-color: white;
 
 }
+
 
 .home__inner h1{
     font-family: "Roboto";
@@ -40,6 +42,27 @@
     
 }
 
+.home__detect{
+    margin-top: 4rem; 
+    width: 47%;
+    margin-left: 4rem;
+    background-color:rgb(52, 168, 83, 10%);
+    animation: attack_detect .6s;
+    display: flex;
+    align-items: center;
+
+}
+
+.home__detect img{
+   margin-left: 2rem;
+}
+
+.home__detect h1{
+    font-weight: 400;
+    font-size: 1.5rem;
+    display: inline-block;
+}
+
 
 .home__submit{
     padding: 1rem 4rem;
@@ -57,29 +80,43 @@
     transform: scale(1.02);
 }
 
+.home__detect-btn{
+    margin-left: 20rem;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #34A853;
+    cursor: pointer;
+    padding: .2rem;
+    border-radius: 5px;
+    transition: all .2s;
+
+}
+
+.home__detect-btn:hover{
+    transform: scale(1.2);
+    background-color:rgb(52, 168, 83, 13%);
+    
+    
+}
+
 
 .custom-select{
 width: 25rem;
 margin-right: 2rem;
 }
 
-.home__detect{
-    margin-top: 15rem;
-    text-align: center;
-    animation: attack_detect .6s;
-}
 
-.home__detect h1{
-    font-weight: 400;
-}
+
+
 
 @keyframes attack_detect{
     0%{
-        margin-top: 30rem;
+        margin-top: 15rem;
         opacity: 0;
     }
     100%{
-        margin-top: 15rem;
+        margin-top: 4rem;
         opacity: 1;
     }
 }

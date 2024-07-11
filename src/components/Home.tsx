@@ -3,9 +3,10 @@ import Header1 from "./Header1";
 import Footer from "./Footer";
 import "./Home.css";
 import { Flex, Select, Spin } from "antd";
-import { getThreat } from "../Api/attack";
+import { getThreat, getDetect } from "../Api/attack";
 import BasicModal from "./Model/Index";
 import ResponseScreen from "./ResponseScreen";
+import check from "../../public/check.svg";
 
 export default function Home() {
   // let history = useNavigate();
@@ -21,9 +22,12 @@ export default function Home() {
 
   // WHEN SUBMIT BUTTON IS CALLED
 
-  const [threat, setThreat] = useState("");
+  // const [threat, setThreat] = useState("");
+  const [threat, setThreat] = useState(false);
   const [spinner, setSpinner] = useState(false);
-  const [threatDetected, setThreatDetected] = useState(false);
+  const [threatDetected, setThreatDetected] = useState("");
+  const [detect,setDetect] = useState(false);
+  const [fetchLogs, setFetchLogs] = useState(false);
 
   const handleSubmit = async (e) => {
     setSpinner(true);
@@ -35,19 +39,52 @@ export default function Home() {
 
       // },5000)
       setSpinner(false);
-      setThreat(response);
+      setThreat(true);
       // alert("Submit Button Clicked");
     }
   };
 
-  // Handling 'DETECT' button click event
-  const handleDetect = async (e) => {
+  // Handling 'ATTACK' button click event
+  const handleAttack = async (e) => {
     e.preventDefault();
     setSpinner(true);
     setTimeout(() => {
       setSpinner(false);
-      setThreatDetected(true);
-    }, 5000);
+      setFetchLogs(true);
+      setThreat(false);
+    }, 3000);
+  };
+
+  const handleFetch = async (e) => {
+    e.preventDefault();
+    setSpinner(true);
+    setTimeout(() => {
+      setSpinner(false);
+      setFetchLogs(false);
+      setDetect(true);
+    }, 3000);
+  };
+
+
+  const handleDetect = async (e) => {
+    e.preventDefault();
+    setSpinner(true);
+    // let response = await getDetect();
+    // if (response) {
+    //   setSpinner(false);
+    //   setDetect(false);
+    //   setThreatDetected(response);
+      
+    // }
+
+    setTimeout(()=>{
+      setSpinner(false);
+      setDetect(false);
+      // setThreatDetected(response);
+      setThreatDetected("Anushka");
+    }, 3000)
+
+   
   };
 
   const onChange = (value: string) => {
@@ -131,10 +168,39 @@ export default function Home() {
             {spinner && <BasicModal spinner={spinner} />}
             {threat && (
               <div className="home__detect">
-                <h1>Attack was successful!</h1>
+                <img src={check} alt="" />
+                <h1>Script Was Generated Successfully!</h1>
                 <button
                   type="submit"
-                  className="home__submit"
+                  className="home__detect-btn"
+                  onClick={handleAttack}
+                >
+                  ATTACK
+                </button>
+              </div>
+            )}
+
+            {fetchLogs && (
+              <div className="home__detect">
+                <img src={check} alt="" />
+                <h1>Attack was executed successfully!</h1>
+                <button
+                  type="submit"
+                  className="home__detect-btn"
+                  onClick={handleFetch}
+                >
+                  FETCH LOGS
+                </button>
+              </div>
+            )}
+
+            {detect && (
+              <div className="home__detect">
+                <img src={check} alt="" />
+                <h1>Attack logs fetched successfully!</h1>
+                <button
+                  type="submit"
+                  className="home__detect-btn"
                   onClick={handleDetect}
                 >
                   DETECT
@@ -144,7 +210,8 @@ export default function Home() {
           </div>
         </div>
       )}
-      {threatDetected && <ResponseScreen />}
+
+      {threatDetected && <ResponseScreen threatData={threatDetected} />}
 
       <Footer />
     </>
