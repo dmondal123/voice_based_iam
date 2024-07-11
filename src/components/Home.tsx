@@ -52,7 +52,7 @@ export default function Home() {
       setSpinner(false);
       setFetchLogs(true);
       setThreat(false);
-    }, 3000);
+    }, 1000);
   };
 
   const handleFetch = async (e) => {
@@ -62,7 +62,7 @@ export default function Home() {
       setSpinner(false);
       setFetchLogs(false);
       setDetect(true);
-    }, 3000);
+    }, 1000);
   };
 
 
@@ -82,7 +82,7 @@ export default function Home() {
       setDetect(false);
       // setThreatDetected(response);
       setThreatDetected("Anushka");
-    }, 3000)
+    }, 1000)
 
    
   };

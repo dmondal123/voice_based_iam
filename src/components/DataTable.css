@@ -1,0 +1,31 @@
+.data-table{
+    margin: 4rem;
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    background-color: rgb(128,128,128,10%);
+    padding: 2rem 5rem;
+    border: 1px solid rgb(128,128,128);
+    border-radius: 2px;
+}
+
+.data-table h1{
+    margin-top: 1rem;
+}
+
+.table{
+    margin-bottom: 2rem;
+    
+    margin-left: 2rem;
+    
+
+}
+
+.table__head{
+   margin-right: 5rem;
+  
+
+}
+
+.table__heading th{
+margin: 2rem;
+}

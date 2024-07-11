@@ -3,6 +3,7 @@ import threatPic from "../../public/threat.svg"
 import roundCheck from "../../public/round-check.svg"
 import downloadButton from "../../public/download-button.svg";
 import {summary} from "../../logs_test/logs.js"
+import DataTable from "./DataTable.jsx";
 
 export default function ResponseScreen({threatData}) {
 
@@ -82,6 +83,8 @@ export default function ResponseScreen({threatData}) {
             })}
           </div>
         </div>
+
+        <DataTable />
       </div>
     </div>
   );
